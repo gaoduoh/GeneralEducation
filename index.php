@@ -1,5 +1,9 @@
+<?php session_start();  //设置缓存
+include('conn.php');
+?>
 <!doctype html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>华侨大学计算机通识教育自主学习平台</title>
@@ -13,10 +17,11 @@
     <link href="css/common.css" rel="stylesheet" type="text/css" />
     <link href="css/indexAndlogin.css" rel="stylesheet" type="text/css" />
 
-    
+
 </head>
 
 <body>
+
     <div class="main clearfix">
         <div class="header clearfix">
             <img class="logo" src="images/logo.png" />
@@ -29,7 +34,7 @@
           <li><a href="#">资料下载</a></li>
           <li><a href="login.php" target="_blank">更多功能</a></li>
         </ul>
-        
+
         <div class="content">首页内容</div>
         <div class="footer">页脚内容</div>
     </div>
@@ -42,6 +47,8 @@
            });
         });
     </script>
+
+
 </body>
 
 </html>
