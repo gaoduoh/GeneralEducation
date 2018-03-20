@@ -1,11 +1,17 @@
+<?php session_start();  //设置缓存
+include('conn.php');
+?>
+
 <!doctype html>
 <html>
     <head>
         <meta charset="utf-8">
         <title>注册</title>
         <script src="common/jquery.js" type="text/javascript"></script>
-        <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet"/>
-        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
+        <link href="common/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+        <link href="common/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
         <link href="css/reset.css" rel="stylesheet" type="text/css" />
         <link href="css/indexAndlogin.css" rel="stylesheet" type="text/css" />
