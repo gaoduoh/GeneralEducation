@@ -1,6 +1,5 @@
 <?php session_start();  //设置缓存
-//include('conn.php');
-include('db_conn.php');
+include('conn.php');
 
 
 if(isset($_POST['submit'])){
@@ -48,7 +47,7 @@ if(isset($_POST['submit'])){
 
     <body>
     <div class="login">
-        <form class="form-inline" role="form">
+        <form class="form-inline" role="form" method="post">
             <div class="form-group">
                 <label  for="user-login">用户名</label>
                 <input type="number" name="user" class="form-control" id="user-login">
