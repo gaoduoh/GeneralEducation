@@ -27,16 +27,15 @@
                 <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                     <p class="self">个人中心</p>
                     <ul class="nav nav-pills nav-stacked">
-                      <li role="presentation"><a href="teacher.php">个人信息</a></li>
-                      <li role="presentation"><a href="changePassword.php">修改密码</a></li>
-                      <li role="presentation" class="active"><a href="message.php">留言板</a></li>
-                      <li role="presentation"><a href="homework.php">作业管理</a></li>
-                      <li role="presentation"><a href="upload.php">资料上传</a></li>
-                      <li role="presentation"><a href="question.php">发布问题</a></li>
+                      <li role="presentation" class="active"><a href="teacher_personal.php">个人信息</a></li>
+                      <li role="presentation"><a href="teacher_password.php">修改密码</a></li>
+                      <li role="presentation"><a href="teacher_homework.php">作业管理</a></li>
+                      <li role="presentation"><a href="teacher_upload.php">资料上传</a></li>
+                      <li role="presentation"><a href="teacher_discuss.php">发布问题</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-xs-9 co-md-9 col-lg-9">
-                    <p style="font-size:20px;font-weight: 900;color:#ff0000">此处实现教师留言板功能</p>
+                    <p style="font-size:20px;font-weight: 900;color:#ff0000">此处实现教师个人信息展示及修改功能</p>
                 </div>
             </div>
         </div>
