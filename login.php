@@ -12,14 +12,14 @@ if(isset($_POST['submit'])){
     if($Password==""){
         echo "<script type='text/javascript'>alert('输入密码');window.location='login.php';</script>";
     }
-    $validate="Select * from student where `id`='$UserName' and `password`='$Password'";
-    $result=mysql_query($validate);
+    $validate="Select * from student where `number`='$UserName' and `password`='$Password'";
+    $result=mysqli_query($validate);
     $hashed_password=MD5($Password);
-    $row=mysql_fetch_row($result);
+    $row=mysqli_fetch_row($result);
     if($row)
     {
         $_SESSION['user']=$UserName;
-        echo "<script type='text/javascript'>alert('登陆成功');window.location='student.php';</script>";
+        echo "<script type='text/javascript'>alert('登陆成功');window.location='student_personal.php';</script>";
     }
     else
     {
