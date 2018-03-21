@@ -8,6 +8,7 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
     <link href="common/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="common/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
         <link href="../css/reset.css" rel="stylesheet" type="text/css" />
         <link href="../css/common.css" rel="stylesheet" type="text/css" />
 
@@ -26,15 +27,14 @@
                     <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                         <p class="self">管理中心</p>
                         <ul class="nav nav-pills nav-stacked">
-                          <li role="presentation"><a href="admin.php">角色管理</a></li>
-                          <li role="presentation" class="active"><a href="message.php">留言板管理</a></li>
-                          <li role="presentation"><a href="homework.php">作业管理</a></li>
-                          <li role="presentation"><a href="data.php">资料管理</a></li>
-                          <li role="presentation"><a href="question.php">问题管理</a></li>
+                          <li role="presentation"><a href="admin_user.php">角色管理</a></li>
+                          <li role="presentation" class="active"><a href="admin_homework.php">作业管理</a></li>
+                          <li role="presentation"><a href="admin_data.php">资料管理</a></li>
+                          <li role="presentation"><a href="admin_discuss.php">问题管理</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-9 col-xs-9 co-md-9 col-lg-9">
-                        <p style="font-size:20px;font-weight: 900;color:#ff0000">此处实现管理员留言板管理</p>
+                        <p style="font-size:20px;font-weight: 900;color:#ff0000">此处实现管理员作业管理 </p>
                     </div>
                 </div>
             </div>

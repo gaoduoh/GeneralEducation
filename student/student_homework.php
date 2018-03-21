@@ -22,21 +22,21 @@
             <p class="title">计算机通识教育<br />自主学习平台</p>
         </div>
         <div class="content clearfix">
-            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span>XXX老师，欢迎你！</span><a href="#">退出</a></p>
+            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span>XXX同学，欢迎你！</span><a href="#">退出</a></p>
             <div class="function clearfix">
                 <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                     <p class="self">个人中心</p>
                     <ul class="nav nav-pills nav-stacked">
-                      <li role="presentation" class="active"><a href="teacher.php">个人信息</a></li>
-                      <li role="presentation"><a href="changePassword.php">修改密码</a></li>
-                      <li role="presentation"><a href="message.php">留言板</a></li>
-                      <li role="presentation"><a href="homework.php">作业管理</a></li>
-                      <li role="presentation"><a href="upload.php">资料上传</a></li>
-                      <li role="presentation"><a href="question.php">发布问题</a></li>
+                      <li role="presentation"><a href="student_personal.php">个人信息</a></li>
+                      <li role="presentation"><a href="student_password.php">修改密码</a></li>
+                      <li role="presentation" class="active"><a href="student_homework.php">作业管理</a></li>
+                      <li role="presentation"><a href="student_download.php">资料下载</a></li>
+                      <li role="presentation"><a href="student_discuss.php">问题讨论</a></li>
+                      <li role="presentation"><a href="student_test.php">自测系统</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-xs-9 co-md-9 col-lg-9">
-                    <p style="font-size:20px;font-weight: 900;color:#ff0000">此处实现教师个人信息展示及修改功能</p>
+                    <p style="font-size:20px;font-weight: 900;color:#ff0000">此处实现学生上交作业功能</p>
                 </div>
             </div>
         </div>
