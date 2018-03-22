@@ -6,8 +6,8 @@
     <script src="common/jquery.js" type="text/javascript"></script>
     <!-- <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
-    <link href="common/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="common/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../common/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../common/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
     <link href="../css/reset.css" rel="stylesheet" type="text/css" />
     <link href="../css/common.css" rel="stylesheet" type="text/css" />
@@ -27,12 +27,12 @@
                 <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                     <p class="self">个人中心</p>
                     <ul class="nav nav-pills nav-stacked">
-                      <li role="presentation"><a href="student_personal.php">个人信息</a></li>
-                      <li role="presentation" class="active"><a href="student_password.php">修改密码</a></li>
-                      <li role="presentation"><a href="student_homework.php">作业管理</a></li>
-                      <li role="presentation"><a href="student_download.php">资料下载</a></li>
-                      <li role="presentation"><a href="student_discuss.php">问题讨论</a></li>
-                      <li role="presentation"><a href="student_test.php">自测系统</a></li>
+                        <li role="presentation"><a href="student_personal.php">个人信息</a></li>
+                        <li role="presentation" class="active"><a href="student_password.php">修改密码</a></li>
+                        <li role="presentation"><a href="student_homework.php">作业管理</a></li>
+                        <li role="presentation"><a href="student_download.php">资料下载</a></li>
+                        <li role="presentation"><a href="student_discuss.php">问题讨论</a></li>
+                        <li role="presentation"><a href="student_test.php">自测系统</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-xs-9 co-md-9 col-lg-9">
