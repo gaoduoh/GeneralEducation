@@ -1,3 +1,11 @@
+<?php session_start();  //设置缓存
+ini_set('error_reporting', 'E_ALL ^ E_NOTICE');//屏蔽非关键性错误
+header("Content-type: text/html; charset=utf-8"); //设置网页编码
+include('../conn.php');
+
+
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -22,7 +30,7 @@
             <p class="title">计算机通识教育<br />自主学习平台</p>
         </div>
         <div class="content clearfix">
-            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span>XXX同学，欢迎你！</span><a href="#">退出</a></p>
+            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span><span><?php echo "${_SESSION["name"]}" ?></span>同学，欢迎你！</span><a href="#">退出</a></p>
             <div class="function clearfix">
                 <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                     <p class="self">个人中心</p>

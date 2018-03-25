@@ -1,3 +1,21 @@
+<?php session_start();  //设置缓存
+ini_set('error_reporting', 'E_ALL ^ E_NOTICE');//屏蔽非关键性错误
+header("Content-type: text/html; charset=utf-8"); //设置网页编码
+include('../conn.php');
+mysqli_query($conn,'set names utf8');
+
+$validate="Select * from ge_student where `name`= '${_SESSION["name"]}'";
+$result = mysqli_query($conn,$validate);
+$row = mysqli_fetch_array($result);
+$name = $row['name'];
+$number = $row['number'];
+$sex = $row['sex'];
+$email = $row['email'];
+$phone = $row['phone'];
+
+
+?>
+
 <!doctype html>
 <html>
 <head>
@@ -12,7 +30,7 @@
     <link href="../css/reset.css" rel="stylesheet" type="text/css" />
     <link href="../css/common.css" rel="stylesheet" type="text/css" />
 
-    
+
 </head>
 
 <body>
@@ -22,7 +40,7 @@
             <p class="title">计算机通识教育<br />自主学习平台</p>
         </div>
         <div class="content clearfix">
-            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span>XXX同学，欢迎你！</span><a href="#">退出</a></p>
+            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span><span><?php echo "${_SESSION["name"]}" ?></span>同学，欢迎你！</span><a href="#">退出</a></p>
             <div class="function clearfix">
                 <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                     <p class="self">个人中心</p>
@@ -36,14 +54,31 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-xs-9 co-md-9 col-lg-9">
-                    <p style="font-size:20px;font-weight: 900;color:#ff0000">此处实现学生个人信息展示及修改功能</p>
+                    <div class="information">
+                        <p><span>学号：</span><span><?php echo "$number" ?></span></p>
+                        <p><span>姓名：</span><span><?php echo "$name" ?></span></p>
+                        <p><span>性别：</span><span><?php echo "$sex" ?></span></p>
+                        <p><span>邮箱：</span><span><?php echo "$email" ?></span></p>
+                        <p><span>联系方式：</span><span><?php echo "$phone" ?></span></p>
+                    </div>
+                    <div class="fixInformation">修改信息</div>
+                    <form method = "GET" class="changeInformation" >
+                        <div><label>学号：</label><label><?php echo "$number" ?></label></div>
+                        <div><label>姓名：</label><label><?php echo "$name" ?></label></div>
+                        <div><label>性别：</label><input type="radio" name="sex" value="男" checked>男<input type="radio" name="sex" value="女">女</div>
+                        <div><label>邮箱：</label><label><?php echo "$email" ?></label></div>
+                        <div><label>联系方式：</label><label><?php echo "$phone" ?></label></div>
+                        <button type="submit" name="submit">确认修改</button>
+                        <button type="button" name="cancel">取消修改</button>
+                    </form>
+
                 </div>
             </div>
         </div>
         <div class="footer"></div>
     </div>
 
-    
+
 </body>
 
 </html>

@@ -4,6 +4,7 @@ body{
 
 /*head*/
 .main{
+    min-height:470px;
     width:70%;
     margin:12px auto;
     background-color:#FFFFFF;
@@ -39,4 +40,19 @@ body{
     width:80%;
     border:1px solid #dddddd;
     margin:0 auto 10px;
+}
+
+/*个人信息模块*/
+.information,.changeInformation,.changePassword{
+    width:80%;
+    height:80%;
+    margin:20px auto;
+    line-height: 20px;
+}
+.fixInformation{
+    cursor:pointer;
+    text-decoration: underline;
+    color:#2e6da4;
+    float:right;
+
 }

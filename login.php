@@ -1,4 +1,6 @@
 <?php session_start();  //设置缓存
+ini_set('error_reporting', 'E_ALL ^ E_NOTICE');//屏蔽非关键性错误
+header("Content-type: text/html; charset=utf-8"); //设置网页编码
 include('conn.php');
 
 
@@ -12,27 +14,33 @@ if(isset($_POST['submit'])){
     if($Password==""){
         echo "<script type='text/javascript'>alert('输入密码');window.location='login.php';</script>";
     }
-    $validate_student="Select number,password from ge_student where `number`='$UserName' and `password`='$Password'";
-    $result_student = mysqli_query($conn,$validate_student);
-    $row_student = mysqli_num_rows($result_student);
+    mysqli_query($conn,'set names utf8');
 
-    $validate_teacher="Select number,password from ge_teacher where `number`='$UserName' and `password`='$Password'";
+    $validate_student="Select number,password,name from ge_student where `number`='$UserName' and `password`='$Password'";
+    $result_student = mysqli_query($conn,$validate_student);
+    $row_student = mysqli_fetch_array($result_student);
+    $name_student = $row_student['name'];
+
+    $validate_teacher="Select number,password,name from ge_teacher where `number`='$UserName' and `password`='$Password'";
     $result_teacher = mysqli_query($conn,$validate_teacher);
-    $row_teacher = mysqli_num_rows($result_teacher);
+    $row_teacher = mysqli_fetch_array($result_teacher);
+    $name_teacher = $row_student['name'];
 
     $validate_admin="Select name,password from ge_admin where `name`='$UserName' and `password`='$Password'";
     $result_admin = mysqli_query($conn,$validate_admin);
-    $row_admin = mysqli_num_rows($result_admin);
+    $row_admin = mysqli_fetch_array($result_admin);
 
 
     if($row_student){
+        $_SESSION['name']=$name_student;
         echo "<script type='text/javascript'>window.location='student/student_personal.php';</script>";
     } else if($row_teacher){
+        $_SESSION['name']=$name_teacher;
         echo "<script type='text/javascript'>window.location='teacher/teacher_personal.php';</script>";
     }else if($row_admin){
         echo "<script type='text/javascript'>window.location='admin/admin_user.php';</script>";
     }else {
-        echo "<script type='text/javascript'>alert('密码错误');window.location='login.php';</script>";
+        echo "<script type='text/javascript'>alert('用户名或密码错误');window.location='login.php';</script>";
     }
 }
 
