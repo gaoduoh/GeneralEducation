@@ -4,7 +4,7 @@ header("Content-type: text/html; charset=utf-8"); //设置网页编码
 include('../conn.php');
 mysqli_query($conn,'set names utf8');
 
-$validate="Select * from ge_student where `name`= '${_SESSION["name"]}'";
+$validate="Select * from ge_student where `pk_student`= '${_SESSION["id"]}'";
 $result = mysqli_query($conn,$validate);
 $row = mysqli_fetch_array($result);
 $name = $row['name'];
@@ -14,6 +14,24 @@ $email = $row['email'];
 $phone = $row['phone'];
 
 
+if(isset($_POST['submit'])) {
+//get the values from the form
+    $sex = $_POST['sex'];
+    $email = $_POST['email'];
+    $phone = $POST['phone'];
+
+    $sql="UPDATE  ge_student set sex='$sex',email='$email',phone='$phone' where `pk_student`= '${_SESSION['id']}'";
+    $result=mysqli_query($conn,$sql);
+    if($result){
+        echo"<script>alert('修改成功')</script>";
+        echo"<script>location.href='student_personal.php'</script>";
+    }else{
+        echo"<script>alert('修改失败')</script>";
+        echo"<script>history.back();</script>";
+    }
+
+}
+
 ?>
 
 <!doctype html>
@@ -21,7 +39,7 @@ $phone = $row['phone'];
 <head>
     <meta charset="utf-8">
     <title>个人中心</title>
-    <script src="common/jquery.js" type="text/javascript"></script>
+    <script src="../common/jquery.js" type="text/javascript"></script>
     <!-- <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
     <link href="../common/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -40,7 +58,7 @@ $phone = $row['phone'];
             <p class="title">计算机通识教育<br />自主学习平台</p>
         </div>
         <div class="content clearfix">
-            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span><span><?php echo "${_SESSION["name"]}" ?></span>同学，欢迎你！</span><a href="#">退出</a></p>
+            <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span><span><?php echo "$name" ?></span>同学，欢迎你！</span><a href="../loginout.php">退出</a></p>
             <div class="function clearfix">
                 <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                     <p class="self">个人中心</p>
@@ -62,12 +80,12 @@ $phone = $row['phone'];
                         <p><span>联系方式：</span><span><?php echo "$phone" ?></span></p>
                     </div>
                     <div class="fixInformation">修改信息</div>
-                    <form method = "GET" class="changeInformation" >
+                    <form method = "POST" class="changeInformation" style="display:none">
                         <div><label>学号：</label><label><?php echo "$number" ?></label></div>
                         <div><label>姓名：</label><label><?php echo "$name" ?></label></div>
                         <div><label>性别：</label><input type="radio" name="sex" value="男" checked>男<input type="radio" name="sex" value="女">女</div>
-                        <div><label>邮箱：</label><label><?php echo "$email" ?></label></div>
-                        <div><label>联系方式：</label><label><?php echo "$phone" ?></label></div>
+                        <div><label>邮箱：</label><input name="email" value="<?php echo "$email" ?>"/></div>
+                        <div><label>联系方式：</label><input name="phone" value = "<?php echo "$phone" ?>"/></div>
                         <button type="submit" name="submit">确认修改</button>
                         <button type="button" name="cancel">取消修改</button>
                     </form>
@@ -78,6 +96,16 @@ $phone = $row['phone'];
         <div class="footer"></div>
     </div>
 
+
+    <script>
+        $(document).ready(function(){
+            $(".fixInformation").click(function(){
+                $(this).css('display','none');
+                $(".information").css('display','none');
+                $(".changeInformation").css('display','block');
+            });
+        });
+    </script>
 
 </body>
 

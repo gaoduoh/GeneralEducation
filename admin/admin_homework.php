@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>管理中心</title>
-        <script src="common/jquery.js" type="text/javascript"></script>
+        <script src="../common/jquery.js" type="text/javascript"></script>
         <!-- <link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/> -->
     <link href="../common/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
@@ -22,7 +22,7 @@
                 <p class="title">计算机通识教育<br />自主学习平台</p>
             </div>
             <div class="content clearfix">
-                <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span>admin，欢迎你！</span><a href="#">退出</a></p>
+                <p class="welcome"><a href="../index.php">首页</a><span>&gt;&gt</span><span>admin，欢迎你！</span><a href="../loginout.php">退出</a></p>
                 <div class="function clearfix">
                     <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                         <p class="self">管理中心</p>
