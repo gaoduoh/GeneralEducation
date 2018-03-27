@@ -74,7 +74,7 @@ if(isset($_POST['submit'])) {
                 </div>
                 <div class="col-sm-9 col-xs-9 co-md-9 col-lg-9">
                     <div class="information">
-                        <p><span>学号：</span><span><?php echo "$number" ?></span></p>
+                        <p><span>教工号：</span><span><?php echo "$number" ?></span></p>
                         <p><span>姓名：</span><span><?php echo "$name" ?></span></p>
                         <p><span>性别：</span><span><?php echo "$sex" ?></span></p>
                         <p><span>邮箱：</span><span><?php echo "$email" ?></span></p>
@@ -82,13 +82,12 @@ if(isset($_POST['submit'])) {
                     </div>
                     <div class="fixInformation">修改信息</div>
                     <form method = "POST" class="changeInformation" style="display:none">
-                        <div><label>学号：</label><label><?php echo "$number" ?></label></div>
+                        <div><label>教工号：</label><label><?php echo "$number" ?></label></div>
                         <div><label>姓名：</label><label><?php echo "$name" ?></label></div>
                         <div><label>性别：</label><input type="radio" name="sex" value="男" checked>男<input type="radio" name="sex" value="女">女</div>
                         <div><label>邮箱：</label><input name="email" value="<?php echo "$email" ?>"/></div>
                         <div><label>联系方式：</label><input name="phone" value = "<?php echo "$phone" ?>"/></div>
                         <button type="submit" name="submit">确认修改</button>
-                        <button type="button" name="cancel">取消修改</button>
                     </form>
                 </div>
             </div>

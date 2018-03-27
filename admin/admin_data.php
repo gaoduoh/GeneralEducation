@@ -1,3 +1,12 @@
+<?php session_start();  //设置缓存
+ini_set('error_reporting', 'E_ALL ^ E_NOTICE');//屏蔽非关键性错误
+header("Content-type: text/html; charset=utf-8"); //设置网页编码
+include('../conn.php');
+mysqli_query($conn,'set names utf8');
+
+?>
+
+
 <!doctype html>
 <html>
     <head>

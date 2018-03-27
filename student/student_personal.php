@@ -12,7 +12,8 @@ $number = $row['number'];
 $sex = $row['sex'];
 $email = $row['email'];
 $phone = $row['phone'];
-
+$college = $row['college'];
+$class = $row['class'];
 
 if(isset($_POST['submit'])) {
 //get the values from the form
@@ -76,6 +77,8 @@ if(isset($_POST['submit'])) {
                         <p><span>学号：</span><span><?php echo "$number" ?></span></p>
                         <p><span>姓名：</span><span><?php echo "$name" ?></span></p>
                         <p><span>性别：</span><span><?php echo "$sex" ?></span></p>
+                        <p><span>学院：</span><span><?php echo "$college" ?></span></p>
+                        <p><span>专业班级：</span><span><?php echo "$class" ?></span></p>
                         <p><span>邮箱：</span><span><?php echo "$email" ?></span></p>
                         <p><span>联系方式：</span><span><?php echo "$phone" ?></span></p>
                     </div>
@@ -83,11 +86,12 @@ if(isset($_POST['submit'])) {
                     <form method = "POST" class="changeInformation" style="display:none">
                         <div><label>学号：</label><label><?php echo "$number" ?></label></div>
                         <div><label>姓名：</label><label><?php echo "$name" ?></label></div>
+                        <div><span>学院：</span><span><?php echo "$college" ?></span></div>
+                        <div><span>专业班级：</span><span><?php echo "$class" ?></span></div>
                         <div><label>性别：</label><input type="radio" name="sex" value="男" checked>男<input type="radio" name="sex" value="女">女</div>
                         <div><label>邮箱：</label><input name="email" value="<?php echo "$email" ?>"/></div>
                         <div><label>联系方式：</label><input name="phone" value = "<?php echo "$phone" ?>"/></div>
                         <button type="submit" name="submit">确认修改</button>
-                        <button type="button" name="cancel">取消修改</button>
                     </form>
 
                 </div>
