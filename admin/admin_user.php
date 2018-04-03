@@ -51,34 +51,37 @@ mysqli_query($conn,'set names utf8');
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane fade active in" id="teacher">
                                 <?php
-                                $pagesize=3;
-                                $res=mysqli_query($conn,"Select count(*) from ge_teacher");
-                                $myrow   =   mysqli_fetch_array($res);
-                                $numrows=$myrow[0];
-                                $pages=intval($numrows/$pagesize);
+                                $pagesize=1;
+                                $teacher_res=mysqli_query($conn,"Select count(*) from ge_teacher");
+                                $teacher_myrow =  mysqli_fetch_array($teacher_res);
+                                $teacher_numrows=$teacher_myrow[0];
+                                $teacher_pages=intval($teacher_numrows/$pagesize);
 
-                                if   ($numrows%$pagesize)
-                                    $pages++;
-                                if (isset($_GET['page'])){
-                                    //echo "page exist";
-                                    $page = $_GET['page'];
-                                    //echo "enter if ";
+                                if   ($teacher_numrows%$pagesize)
+                                    $teacher_pages++;
+                                if (isset($_GET['teacher_page'])){
+                                    $teacher_page = $_GET['teacher_page'];
+                                }else{
+                                    $teacher_page = 1;
                                 }
-                                else{
-                                    $page = 1;
+                                if($teacher_page<1){
+                                    $teacher_page = 1;
                                 }
-                                $offset=$pagesize*($page-1);
-                                echo $offset;
-                                $res=mysqli_query($conn,"Select * from ge_teacher limit $offset,$pagesize");
-                                if   ($myrow   =   mysqli_fetch_array($res))
+                                if($teacher_page>=$teacher_pages){
+                                    $teacher_page = $teacher_pages;
+                                }
+                                $teacher_offset=$pagesize*($teacher_page-1);
+//                                echo $teacher_page;
+//                                echo $teacher_offset;
+                                $teacher_res=mysqli_query($conn,"Select * from ge_teacher limit $teacher_offset,$pagesize");
+                                if   ($teacher_myrow   =   mysqli_fetch_array($teacher_res))
                                 {
                                 $i=0;
                                 ?>
                                 <table cellspacing=0 bordercolordark=#FFFFFF width="95%" bordercolorlight=#000000 border=1 align="center" cellpadding="2">
                                     <tr bgcolor="#6b8ba8" style="color:#FFFFFF">
-                                        <td width="10%" align="center" valign="bottom" height="19">学号</td>
+                                        <td width="10%" align="center" valign="bottom" height="19">工号</td>
                                         <td width="10%" align="center" valign="bottom">姓名</td>
-                                        <td width="5%" align="center" valign="bottom">班级</td>
 
                                     </tr>
                                     <?php
@@ -86,32 +89,29 @@ mysqli_query($conn,'set names utf8');
                                         $i++;
                                         ?>
                                         <tr>
-                                            <td   width="10%"   bgcolor="#E6F2FF"><?php   echo   $myrow[1];?> </td>
-                                            <td   width="5%"   bgcolor="#E6F2FF"><?php   echo   $myrow[2];?> </td>
-                                            <td   width="40%"   bgcolor="#E6F2FF"><?php   echo   $myrow[6];?>  </td>
+                                            <td   width="10%"   bgcolor="#E6F2FF"><?php   echo   $teacher_myrow['number'];?> </td>
+                                            <td   width="5%"   bgcolor="#E6F2FF"><?php   echo   $teacher_myrow['name'];?> </td>
                                         </tr>
                                         <?php
                                     }
-                                    while   ($myrow   =   mysqli_fetch_array($res));
+                                    while   ($teacher_myrow   =   mysqli_fetch_array($teacher_res));
                                     echo   "</table>"   ;
                                     }
-                                    echo   "<div   align='center'>共有".$pages."页(".$page."/".$pages.")<br>";
-                                    for   ($i=1;$i<=$pages;$i++)
-                                        echo   "<a   href='pages.php?page=".$i."'>第".$i   ."页</a>     ";
-                                    echo   "<form   action='pages.php'   method='post'>";
+                                    echo   "<div   align='center'>共有".$teacher_pages."页(".$teacher_page."/".$teacher_pages.")<br>";
+                                    for   ($i=1;$i<=$teacher_pages;$i++)
+                                        echo   "<a   href='admin_user.php?page=".$i."'>第".$i   ."页</a>     ";
+                                    echo   "<form   action='admin_user.php'   method='get'>";
                                     $first=1;
-                                    $prev=$page-1;
-                                    $next=$page+1;
-                                    $last=$pages;
+                                    $prev=$teacher_page-1;
+                                    $next=$teacher_page+1;
+                                    $last=$teacher_pages;
 
-                                    echo   "<a   href='pages.php?page=".$first."'>首页</a>     ";
-                                    //echo "page is:";
-                                    //echo "$page";
-                                    echo   "<a   href='pages.php?page=".$prev."'>上一页</a>     ";
+                                    echo   "<a class='teacher_page' href='admin_user.php?teacher_page=".$first."'>首页</a> ";
+                                    echo   "<a  class='teacher_page' href='admin_user.php?teacher_page=".$prev."'>上一页</a>";
 
 
-                                    echo   "<a   href='pages.php?page=".$next."'>下一页</a>     ";
-                                    echo   "<a   href='pages.php?page=".$last."'>尾页</a>     ";
+                                    echo   "<a  class='teacher_page' href='admin_user.php?teacher_page=".$next."'>下一页</a>";
+                                    echo   "<a  class='teacher_page' href='admin_user.php?teacher_page=".$last."'>尾页</a>";
 
 
                                     echo   "</form>";
@@ -120,26 +120,30 @@ mysqli_query($conn,'set names utf8');
                             </div>
                             <div class="tab-pane fade" id="student">
                                 <?php
-                                $pagesize=3;
-                                $res=mysqli_query($conn,"Select count(*) from ge_student");
-                                $myrow   =   mysqli_fetch_array($res);
-                                $numrows=$myrow[0];
-                                $pages=intval($numrows/$pagesize);
+                                $pagesize=1;
+                                $student_res=mysqli_query($conn,"Select count(*) from ge_student");
+                                $student_myrow   =   mysqli_fetch_array($student_res);
+                                $student_numrows=$student_myrow[0];
+                                $student_pages=intval($student_numrows/$pagesize);
 
-                                if   ($numrows%$pagesize)
-                                    $pages++;
-                                if (isset($_GET['page'])){
-                                    //echo "page exist";
-                                    $page = $_GET['page'];
-                                    //echo "enter if ";
+                                if   ($student_numrows%$pagesize)
+                                    $student_pages++;
+
+                                if (isset($_GET['student_page'])){
+                                    $student_page = $_GET['student_page'];
+                                }else{
+                                    $student_page = 1;
                                 }
-                                else{
-                                    $page = 1;
+                                if($student_page<1){
+                                    $student_page = 1;
                                 }
-                                $offset=$pagesize*($page-1);
-                                echo $offset;
-                                $res=mysqli_query($conn,"Select * from ge_student limit $offset,$pagesize");
-                                if   ($myrow   =   mysqli_fetch_array($res))
+                                if($student_page>=$student_pages){
+                                    $student_page = $student_pages;
+                                }
+                                $student_offset=$pagesize*($student_page-1);
+//                                echo $offset;
+                                $student_res=mysqli_query($conn,"Select * from ge_student limit $student_offset,$pagesize");
+                                if   ($student_myrow   =   mysqli_fetch_array($student_res))
                                 {
                                 $i=0;
                                 ?>
@@ -155,32 +159,32 @@ mysqli_query($conn,'set names utf8');
                                         $i++;
                                         ?>
                                         <tr>
-                                            <td   width="10%"   bgcolor="#E6F2FF"><?php   echo   $myrow[1];?> </td>
-                                            <td   width="5%"   bgcolor="#E6F2FF"><?php   echo   $myrow[2];?> </td>
-                                            <td   width="40%"   bgcolor="#E6F2FF"><?php   echo   $myrow[6];?>  </td>
+                                            <td   width="10%"   bgcolor="#E6F2FF"><?php   echo   $student_myrow['number'];?> </td>
+                                            <td   width="5%"   bgcolor="#E6F2FF"><?php   echo   $student_myrow['name'];?> </td>
+                                            <td   width="40%"   bgcolor="#E6F2FF"><?php   echo   $student_myrow['class'];?>  </td>
                                         </tr>
                                         <?php
                                     }
-                                    while   ($myrow   =   mysqli_fetch_array($res));
+                                    while   ($student_myrow   =   mysqli_fetch_array($student_res));
                                     echo   "</table>"   ;
                                     }
-                                    echo   "<div   align='center'>共有".$pages."页(".$page."/".$pages.")<br>";
-                                    for   ($i=1;$i<=$pages;$i++)
-                                        echo   "<a   href='pages.php?page=".$i."'>第".$i   ."页</a>     ";
-                                    echo   "<form   action='pages.php'   method='post'>";
+                                    echo   "<div   align='center'>共有".$student_pages."页(".$student_page."/".$student_pages.")<br>";
+                                    for   ($i=1;$i<=$student_pages;$i++)
+                                        echo   "<a   href='admin_user.php?page=".$i."'>第".$i   ."页</a>     ";
+                                    echo   "<form   action='admin_user.php'   method='get'>";
                                     $first=1;
-                                    $prev=$page-1;
-                                    $next=$page+1;
-                                    $last=$pages;
+                                    $prev=$student_page-1;
+                                    $next=$student_page+1;
+                                    $last=$student_pages;
 
-                                    echo   "<a   href='pages.php?page=".$first."'>首页</a>     ";
+                                    echo   "<a class='student_page'  href='admin_user.php?student_page=".$first."'>首页</a>     ";
                                     //echo "page is:";
                                     //echo "$page";
-                                    echo   "<a   href='pages.php?page=".$prev."'>上一页</a>     ";
+                                    echo   "<a  class='student_page' href='admin_user.php?student_page=".$prev."'>上一页</a>     ";
 
 
-                                    echo   "<a   href='pages.php?page=".$next."'>下一页</a>     ";
-                                    echo   "<a   href='pages.php?page=".$last."'>尾页</a>     ";
+                                    echo   "<a class='student_page'  href='admin_user.php?student_page=".$next."'>下一页</a>     ";
+                                    echo   "<a class='student_page'  href='admin_user.php?student_page=".$last."'>尾页</a>     ";
 
 
                                     echo   "</form>";
@@ -197,24 +201,27 @@ mysqli_query($conn,'set names utf8');
         </div>
 
 
-<!--    <script>-->
-<!--        $(document).ready(function(){-->
-<!--            var lis=$("#myTab li");-->
-<!--            var divs=$("#myTabContent>div");-->
-<!--            if(lis.length!=divs.length) return;-->
-<!--            for(var i=0;i<lis.length;i++){-->
-<!--                lis[i].id=i;-->
-<!--                lis[i].click=function(){-->
-<!--                    for(var j=0;j<lis.length;j++){-->
-<!--                        divs[j].removeClass("active");-->
-<!--                        divs[j].removeClass("in");-->
-<!--                    }-->
-<!--                    divs[this.id].addClass("active");-->
-<!--                    divs[this.id].addClass("in");-->
-<!--                }-->
-<!--            }-->
-<!--        });-->
-<!--    </script>-->
+    <script>
+        $(document).ready(function(){
+            $(".teacher_page").click(function(){
+                $("#myTab li").removeClass("active");
+                $("#myTabContent>div").removeClass("active");
+                $("#myTabContent>div").removeClass("in");
+                $("#myTab li:eq(0)").addClass("active");
+                $("#myTabContent>div:eq(0)").addClass("active");
+                $("#myTabContent>div:eq(0)").addClass("in");
+            });
+
+            $(".student_page").click(function(){
+                $("#myTab li").removeClass("active");
+                $("#myTabContent>div").removeClass("active");
+                $("#myTabContent>div").removeClass("in");
+                $("#myTab li:eq(1)").addClass("active");
+                $("#myTabContent>div:eq(1)").addClass("active");
+                $("#myTabContent>div:eq(1)").addClass("in");
+            });
+        });
+    </script>
 
     </body>
 
