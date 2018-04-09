@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
         $_SESSION['id']=$id_teacher;
         echo "<script type='text/javascript'>window.location='teacher/teacher_personal.php';</script>";
     }else if($row_admin){
-        echo "<script type='text/javascript'>window.location='admin/admin_user.php';</script>";
+        echo "<script type='text/javascript'>window.location='admin/admin_user_tea.php';</script>";
     }else {
         echo "<script type='text/javascript'>alert('用户名或密码错误');window.location='login.php';</script>";
     }

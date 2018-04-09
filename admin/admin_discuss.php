@@ -36,7 +36,7 @@ mysqli_query($conn,'set names utf8');
                     <div class="col-sm-3 col-xs-3 co-md-3 col-lg-3">
                         <p class="self">管理中心</p>
                         <ul class="nav nav-pills nav-stacked">
-                            <li role="presentation"><a href="admin_user.php">角色管理</a></li>
+                            <li role="presentation"><a href="admin_user_tea.php">角色管理</a></li>
                             <li role="presentation"><a href="admin_homework.php">作业管理</a></li>
                             <li role="presentation"><a href="admin_data.php">资料管理</a></li>
                             <li role="presentation" class="active"><a href="admin_discuss.php">问题管理</a></li>
