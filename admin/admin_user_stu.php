@@ -4,6 +4,28 @@ header("Content-type: text/html; charset=utf-8"); //设置网页编码
 include('../conn.php');
 mysqli_query($conn,'set names utf8');
 
+
+//if(isset($_POST['submit'])){
+//     $file_stu=$_FILES['file_stu'];
+////print_r($file_stu['name']);die;
+//    $ss=substr($file_stu['name'],strrpos($file_stu['name'],'.')+1);//截取后缀名
+//    if(($ss!="xls")||($ss!="xlsx")){
+//        echo "文件格式不正确";die;
+//    }
+//    $file=file_get_contents($file_stu['tmp_name']);
+//    $arr=explode("\n",$file);
+//    array_pop($arr);//去掉最后一个空
+//    unset($arr[0]);
+//    foreach($arr as &$v){
+//        $v=explode("\t",$v);
+//        $str=$pdo->query("insert into ge_student(number,name,password) value('$v[1]','$v[2]','$v[3]'");
+//    }
+//    if($str){
+//        echo "导入成功";
+//    }else{
+//        echo "导入失败";
+//    }
+//}
 ?>
 
 <!doctype html>
@@ -126,7 +148,11 @@ mysqli_query($conn,'set names utf8');
                             <div class="user-add clearfix" style="position: relative;">
                                 <button class="user-add-bn">添加学生</button>
                                 <div class="user-add-bl">
-                                    
+                                    <form method="post">
+                                        <input type="file" name="file_stu"/>
+                                        <input type="submit" name="submit"/>
+                                    </form>
+
                                 </div>
                             </div>
                         </div>

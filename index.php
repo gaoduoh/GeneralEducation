@@ -32,7 +32,7 @@ include('conn.php');
           <li><a href="#">学校概况</a></li>
           <li><a href="#">公告</a></li>
           <li><a href="#">资料下载</a></li>
-          <li><a href="login.php" target="_blank">更多功能</a></li>
+          <li><a href="login.php" target="_blank">登陆</a></li>
         </ul>
 
         <div class="content">首页内容</div>
